@@ -1,0 +1,20 @@
+{
+  "name": "skupstina",
+  "version": "1.0.0",
+  "description": "",
+  "main": "Skupstina.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleksandarPetr/Skupstina.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aleksandarPetr/Skupstina/issues"
+  },
+  "homepage": "https://github.com/aleksandarPetr/Skupstina#readme"
+}
