@@ -33,7 +33,7 @@ export class Stranka {
         }
     }
 
-    vratiMladjegPoslanika(brojGodina) {
+    vratiPoslanikeMladjeOd(brojGodina) {
         let array = []
         let i = 0;
         while(i < this.poslanici.length) {
@@ -68,5 +68,5 @@ stranka.dodajPoslanika(poslanik3)
 
 // console.log(stranka.filterPoslanik(3, 65))
 
-// console.log(stranka.vratiMladjegPoslanika(55))
+// console.log(stranka.vratiPoslanikeMladjeOd(57))
 

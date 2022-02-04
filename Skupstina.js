@@ -26,20 +26,13 @@ export class Skupstina {
 
     odstampajSvakiJmbg() {
         let poslaniciPodaci = this.spisakStranki.entries()
-        const sviPoslanici = []
         const jmbgs = []
         for(const [key, value] of poslaniciPodaci) {
             for (let poslanik of value.dajNizPoslanika()) {
-                sviPoslanici.push(poslanik)
+                if(!this.proveriDaLiVrednostPostojiUNizu(jmbgs, poslanik.jmbg)) {
+                    jmbgs.push(poslanik.jmbg)
+                }
             }
-        }
-        for(const poslanik of sviPoslanici) {
-            if(this.proveriDaLiVrednostPostojiUNizu(jmbgs, poslanik.jmbg)){
-                return false
-            } else {
-                jmbgs.push(poslanik.jmbg)
-            }
-
         }
         const count = jmbgs.length
         let randomArray = []
@@ -63,7 +56,6 @@ export class Skupstina {
         let strankaPodaci = this.spisakStranki.entries()
         const[[key, value]] = strankaPodaci
         let minimum = value.brojPoslanika()
-        let trazenaStranka = key
         let trazeneStranke = []
         for(const [key, value] of this.spisakStranki.entries()) {
             if(value.brojPoslanika() === minimum) {
@@ -82,20 +74,12 @@ export class Skupstina {
     }
 
     pronadjiTrazenuRec(rec) {
-        const nizSvihPoslanika = []
-        const imenaSvihPoslanika = []
+        const poslaniciSaSlicnimImenom = []
         for(const [key, value] of this.spisakStranki) {
             for (let poslanik of value.dajNizPoslanika()) {
-                nizSvihPoslanika.push(poslanik)
-            }
-        }
-        for(const poslanik of nizSvihPoslanika) {
-            imenaSvihPoslanika.push(poslanik.preuzmiIme())
-        }
-        const poslaniciSaSlicnimImenom = []
-        for(let i = 0; i < imenaSvihPoslanika.length; i++) {
-            if((`${imenaSvihPoslanika[i]}`).includes(`${rec}`)) {
-                poslaniciSaSlicnimImenom.push(`${imenaSvihPoslanika[i]}`)
+                if((`${poslanik.preuzmiIme()}`).includes(`${rec}`)) {
+                    poslaniciSaSlicnimImenom.push(`${poslanik.preuzmiIme()}`)
+                }
             }
         }
         return poslaniciSaSlicnimImenom
@@ -119,9 +103,10 @@ stranka1.dodajPoslanika(poslanik5)
 stranka1.dodajPoslanika(poslanik2)
 stranka2.dodajPoslanika(poslanik4)
 stranka2.dodajPoslanika(poslanik3)
+stranka2.dodajPoslanika(poslanik3)
 stranka3.dodajPoslanika(poslanik6)
 stranka3.dodajPoslanika(poslanik7)
-stranka3.dodajPoslanika(poslanik7)
+// stranka3.dodajPoslanika(poslanik7)
 
 
 skupstina.dodajStranku('BCB', stranka1)
@@ -137,7 +122,7 @@ skupstina.dodajStranku('MNM', stranka3)
 
 // console.log(skupstina.strankaSaNajmanjimBrojemMesta())
 
-// console.log(skupstina.pronadjiTrazenuRec('Ivan'))
+console.log(skupstina.pronadjiTrazenuRec('Milos'))
 
 
 
